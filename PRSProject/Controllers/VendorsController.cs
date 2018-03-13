@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using Utility;
 
 namespace PRSProject.Controllers
 {
@@ -46,7 +47,7 @@ namespace PRSProject.Controllers
 
         public ActionResult List()
         {
-            return Json(db.Vendors.ToList(), JsonRequestBehavior.AllowGet);
+            return new JsonNetResult { Data = db.Vendors.ToList() };
         }
 
         public ActionResult Get(int? id)
@@ -60,7 +61,7 @@ namespace PRSProject.Controllers
             {
                 return Json(new JsonMessage("Failure", "Vendor does not exist. Do you have the correct Id?"), JsonRequestBehavior.AllowGet);
             }
-            return Json(vendor, JsonRequestBehavior.AllowGet);
+            return new JsonNetResult { Data = vendor };
         }
 
         // [POST] /Customers/Create

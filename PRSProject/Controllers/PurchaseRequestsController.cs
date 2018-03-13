@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using Utility;
 
 namespace PRSProject.Controllers
 {
@@ -46,7 +47,7 @@ namespace PRSProject.Controllers
 
         public ActionResult List()
         {
-            return Json(db.PurchaseRequests.ToList(), JsonRequestBehavior.AllowGet);
+            return new JsonNetResult { Data = db.PurchaseRequests.ToList() };
         }
 
         public ActionResult Get(int? id)
@@ -60,10 +61,10 @@ namespace PRSProject.Controllers
             {
                 return Json(new JsonMessage("Failure", "Purchase Request does not exist. Do you have the correct Id?"), JsonRequestBehavior.AllowGet);
             }
-            return Json(purchaseRequest, JsonRequestBehavior.AllowGet);
+            return new JsonNetResult { Data = purchaseRequest };
         }
 
-        // [POST] /Customers/Create
+        // [POST] /PurchaseRequests/Create
         public ActionResult Create([FromBody] PurchaseRequest purchaseRequest)
         {
             purchaseRequest.Total = 0;
@@ -78,7 +79,7 @@ namespace PRSProject.Controllers
 
         }
 
-        // [POST] /Customers/Change
+        // [POST] /PurchaseRequests/Change
         public ActionResult Change([FromBody] PurchaseRequest purchaseRequest)
         {
             PurchaseRequest tempPurchaseRequest = db.PurchaseRequests.Find(purchaseRequest.Id);
@@ -91,8 +92,7 @@ namespace PRSProject.Controllers
             tempPurchaseRequest.Justification = purchaseRequest.Justification;
             tempPurchaseRequest.DateNeeded = purchaseRequest.DateNeeded;
             tempPurchaseRequest.DeliveryMode = purchaseRequest.DeliveryMode;
-            tempPurchaseRequest.Status = purchaseRequest.Status;
-            //tempPurchaseRequest.Total = purchaseRequest.Total;
+            tempPurchaseRequest.Status = purchaseRequest.Status;            
             tempPurchaseRequest.Active = purchaseRequest.Active;
             tempPurchaseRequest.ReasonForRejection = purchaseRequest.ReasonForRejection;            
             tempPurchaseRequest.DateUpdated = DateTime.Now;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -36,6 +37,7 @@ namespace PRSProject.Models
         public DateTime? DateUpdated { get; set; }
         //public int UpdatedByUser { get; set; }
 
-        public virtual User User { get; set; }
+        public virtual User User { get; set; }        
+        public virtual List<PurchaseRequestLineItem> PurchaseRequestLineItems { get; set; }
     }
 }

@@ -6,12 +6,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using Utility;
 
 namespace PRSProject.Controllers
 {
     public class UsersController : Controller
     {
         PRSDbContext db = new PRSDbContext();
+
+        public ActionResult Login(string username, string password)
+        {
+            db.Users.Where(u => u.UserName == username);
+            db.Users.Where(u => u.Password == password);
+        }
 
         // return Json objects including the JsonRequestBehavior.AllowGet
         private ActionResult Js(object data)
@@ -46,7 +53,7 @@ namespace PRSProject.Controllers
 
         public ActionResult List()
         {
-            return Json(db.Users.ToList(), JsonRequestBehavior.AllowGet);
+            return new JsonNetResult { Data = db.Users.ToList() };
         }
 
         public ActionResult Get(int? id)
@@ -60,7 +67,7 @@ namespace PRSProject.Controllers
             {
                 return Json(new JsonMessage("Failure", "User does not exist. Do you have the correct Id?"), JsonRequestBehavior.AllowGet);
             }
-            return Json(user, JsonRequestBehavior.AllowGet);
+            return new JsonNetResult { Data = user };
         }
 
         // [POST] /Customers/Create

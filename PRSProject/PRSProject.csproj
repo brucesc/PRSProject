@@ -210,6 +210,18 @@
     <Compile Include="Migrations\201803121609008_DateCreated attribute.Designer.cs">
       <DependentUpon>201803121609008_DateCreated attribute.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803131518324_JsonIgnore attribute added to PRLI virtual.cs" />
+    <Compile Include="Migrations\201803131518324_JsonIgnore attribute added to PRLI virtual.Designer.cs">
+      <DependentUpon>201803131518324_JsonIgnore attribute added to PRLI virtual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803131631587_swapped to correct virtual.cs" />
+    <Compile Include="Migrations\201803131631587_swapped to correct virtual.Designer.cs">
+      <DependentUpon>201803131631587_swapped to correct virtual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803131651552_switched the JsonIgnore attribute back to correct spot.cs" />
+    <Compile Include="Migrations\201803131651552_switched the JsonIgnore attribute back to correct spot.Designer.cs">
+      <DependentUpon>201803131651552_switched the JsonIgnore attribute back to correct spot.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PRSDbContext.cs" />
@@ -306,6 +318,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803121609008_DateCreated attribute.resx">
       <DependentUpon>201803121609008_DateCreated attribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803131518324_JsonIgnore attribute added to PRLI virtual.resx">
+      <DependentUpon>201803131518324_JsonIgnore attribute added to PRLI virtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803131631587_swapped to correct virtual.resx">
+      <DependentUpon>201803131631587_swapped to correct virtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803131651552_switched the JsonIgnore attribute back to correct spot.resx">
+      <DependentUpon>201803131651552_switched the JsonIgnore attribute back to correct spot.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
