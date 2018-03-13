@@ -22,15 +22,17 @@ namespace PRSProject.Models
         [Required]
         [StringLength(25)]
         public string DeliveryMode { get; set; }
+        [DefaultValue("New")]
         public string Status { get; set; }
+        [DefaultValue(0)]
         public decimal Total { get; set; }
         [DefaultValue(true)]
         public bool Active { get; set; }
         [StringLength(100)]
         public string ReasonForRejection { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime DateCreated { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? DateUpdated { get; set; }
         //public int UpdatedByUser { get; set; }
 

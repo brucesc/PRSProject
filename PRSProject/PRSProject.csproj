@@ -201,6 +201,15 @@
     <Compile Include="Migrations\201803092113273_allow null on dateupdated.Designer.cs">
       <DependentUpon>201803092113273_allow null on dateupdated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803121424464_set default value for status.cs" />
+    <Compile Include="Migrations\201803121424464_set default value for status.Designer.cs">
+      <DependentUpon>201803121424464_set default value for status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803121605173_commented out the database generated attribute for datecreated\updated.cs" />
+    <Compile Include="Migrations\201803121609008_DateCreated attribute.cs" />
+    <Compile Include="Migrations\201803121609008_DateCreated attribute.Designer.cs">
+      <DependentUpon>201803121609008_DateCreated attribute.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PRSDbContext.cs" />
@@ -210,6 +219,7 @@
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\JsonMessage.cs" />
+    <Compile Include="Utility\JsonNetResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -290,6 +300,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803092113273_allow null on dateupdated.resx">
       <DependentUpon>201803092113273_allow null on dateupdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803121424464_set default value for status.resx">
+      <DependentUpon>201803121424464_set default value for status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803121609008_DateCreated attribute.resx">
+      <DependentUpon>201803121609008_DateCreated attribute.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

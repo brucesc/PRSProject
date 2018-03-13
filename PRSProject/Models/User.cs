@@ -34,9 +34,9 @@ namespace PRSProject.Models
         public bool IsAdmin { get; set; }
         [DefaultValue(true)]
         public bool Active { get; set; }        
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime DateCreated { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? DateUpdated { get; set; }
         //public int UpdatedByUser { get; set; }
     }

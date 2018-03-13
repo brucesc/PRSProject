@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
+using System.Web.Mvc;
 
 namespace PRSProject.Utility
 {
@@ -15,5 +17,5 @@ namespace PRSProject.Utility
             this.Result = result;
             this.Message = message;
         }
-    }
+    }      
 }

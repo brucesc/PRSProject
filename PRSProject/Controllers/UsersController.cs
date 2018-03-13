@@ -30,7 +30,7 @@ namespace PRSProject.Controllers
             {
                 return Json(new JsonMessage("Failure", ex.Message), JsonRequestBehavior.AllowGet);
             }
-            return Json(new JsonMessage("Success", "Customer was " + actionResult));
+            return Json(new JsonMessage("Success", "User was " + actionResult));
         }
 
         //// /Users/SearchByName? name=xyz
@@ -58,7 +58,7 @@ namespace PRSProject.Controllers
             User user = db.Users.Find(id);
             if (user == null)
             {
-                return Json(new JsonMessage("Failure", "Customer does not exist. Do you have the correct Id?"), JsonRequestBehavior.AllowGet);
+                return Json(new JsonMessage("Failure", "User does not exist. Do you have the correct Id?"), JsonRequestBehavior.AllowGet);
             }
             return Json(user, JsonRequestBehavior.AllowGet);
         }
@@ -66,10 +66,13 @@ namespace PRSProject.Controllers
         // [POST] /Customers/Create
         public ActionResult Create([FromBody] User user)
         {
+            user.Active = true;
+            user.DateCreated = DateTime.Now;
             if (!ModelState.IsValid)
             {
                 return Js(new JsonMessage("Failure", "ModelState is not valid"));
             }
+            
             db.Users.Add(user);
             return TrySave("created.");
 
@@ -77,11 +80,11 @@ namespace PRSProject.Controllers
 
         // [POST] /Customers/Change
         public ActionResult Change([FromBody] User user)
-        {
+        {            
             User tempUser = db.Users.Find(user.Id);
             if (tempUser == null)
             {
-                return Js(new JsonMessage("Failure", "Record of customer to be changed does not exist"));
+                return Js(new JsonMessage("Failure", "Record of user to be changed does not exist"));
             }
             tempUser.UserName = user.UserName;
             tempUser.Password = user.Password;
@@ -92,13 +95,14 @@ namespace PRSProject.Controllers
             tempUser.IsReviewer = user.IsReviewer;
             tempUser.IsAdmin = user.IsAdmin;
             tempUser.Active = user.Active;
+            tempUser.DateUpdated = DateTime.Now;
             return TrySave("changed.");
         }
 
         public ActionResult Remove([FromBody] User user)
         {
-            User tempCustomer = db.Users.Find(user.Id);
-            db.Users.Remove(tempCustomer);
+            User tempUser = db.Users.Find(user.Id);
+            db.Users.Remove(tempUser);
             return TrySave("removed.");
 
         }
