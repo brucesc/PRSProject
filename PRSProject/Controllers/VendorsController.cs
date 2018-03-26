@@ -81,6 +81,7 @@ namespace PRSProject.Controllers
         // [POST] /Customers/Change
         public ActionResult Change([FromBody] Vendor vendor)
         {
+            if (vendor.Name == null) return new EmptyResult();
             Vendor tempVendor = db.Vendors.Find(vendor.Id);
             if (tempVendor == null)
             {
@@ -102,6 +103,7 @@ namespace PRSProject.Controllers
 
         public ActionResult Remove([FromBody] Vendor vendor)
         {
+            if (vendor.Name == null) return new EmptyResult();
             Vendor tempVendor = db.Vendors.Find(vendor.Id);
             db.Vendors.Remove(tempVendor);
             return TrySave("removed.");

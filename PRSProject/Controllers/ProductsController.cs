@@ -99,6 +99,7 @@ namespace PRSProject.Controllers
 
         public ActionResult Remove([FromBody] Product product)
         {
+            if (product.Name == null) return new EmptyResult();
             Product tempProduct = db.Products.Find(product.Id);
             db.Products.Remove(tempProduct);
             return TrySave("removed.");

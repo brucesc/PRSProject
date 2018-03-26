@@ -14,11 +14,11 @@ namespace PRSProject.Controllers
     {
         PRSDbContext db = new PRSDbContext();
 
-        public ActionResult Login(string username, string password)
-        {
-            db.Users.Where(u => u.UserName == username);
-            db.Users.Where(u => u.Password == password);
-        }
+        //public ActionResult Login(string username, string password)
+        //{
+        //    db.Users.Where(u => u.UserName == username);
+        //    db.Users.Where(u => u.Password == password);
+        //}
 
         // return Json objects including the JsonRequestBehavior.AllowGet
         private ActionResult Js(object data)
@@ -87,7 +87,8 @@ namespace PRSProject.Controllers
 
         // [POST] /Customers/Change
         public ActionResult Change([FromBody] User user)
-        {            
+        {
+            if (user.UserName == null) return new EmptyResult();
             User tempUser = db.Users.Find(user.Id);
             if (tempUser == null)
             {
@@ -108,6 +109,7 @@ namespace PRSProject.Controllers
 
         public ActionResult Remove([FromBody] User user)
         {
+            if (user.UserName == null) return new EmptyResult();
             User tempUser = db.Users.Find(user.Id);
             db.Users.Remove(tempUser);
             return TrySave("removed.");
