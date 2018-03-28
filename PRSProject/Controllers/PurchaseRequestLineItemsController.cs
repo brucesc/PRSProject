@@ -81,6 +81,7 @@ namespace PRSProject.Controllers
         // [POST] /PurchaseRequestLineItems/Create
         public ActionResult Create([FromBody] PurchaseRequestLineItem purchaseRequestLineItem)
         {
+            if (purchaseRequestLineItem.Quantity == 0) return new EmptyResult();
             if (!ModelState.IsValid)
             {
                 return Js(new JsonMessage("Failure", "ModelState is not valid"));
@@ -106,7 +107,7 @@ namespace PRSProject.Controllers
         // [POST] /PurchaseRequestLineItems/Change
         public ActionResult Change([FromBody] PurchaseRequestLineItem purchaseRequestLineItem)
         {
-            if (purchaseRequestLineItem.Product.Name == null) return new EmptyResult();
+            if (purchaseRequestLineItem.Quantity == 0) return new EmptyResult();
 
             PurchaseRequestLineItem tempPurchaseRequestLineItem = db.PurchaseRequestLineItems.Find(purchaseRequestLineItem.Id);
             if (tempPurchaseRequestLineItem == null)
@@ -133,7 +134,7 @@ namespace PRSProject.Controllers
 
         public ActionResult Remove([FromBody] PurchaseRequestLineItem purchaseRequestLineItem)
         {
-            if (purchaseRequestLineItem.Product.Name == null) return new EmptyResult();
+            if (purchaseRequestLineItem.Quantity == 0) return new EmptyResult();
 
             PurchaseRequestLineItem tempPurchaseRequestLineItem = db.PurchaseRequestLineItems.Find(purchaseRequestLineItem.Id);
 
