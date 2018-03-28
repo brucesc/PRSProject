@@ -106,6 +106,8 @@ namespace PRSProject.Controllers
         // [POST] /PurchaseRequestLineItems/Change
         public ActionResult Change([FromBody] PurchaseRequestLineItem purchaseRequestLineItem)
         {
+            if (purchaseRequestLineItem.Product.Name == null) return new EmptyResult();
+
             PurchaseRequestLineItem tempPurchaseRequestLineItem = db.PurchaseRequestLineItems.Find(purchaseRequestLineItem.Id);
             if (tempPurchaseRequestLineItem == null)
             {
@@ -131,7 +133,10 @@ namespace PRSProject.Controllers
 
         public ActionResult Remove([FromBody] PurchaseRequestLineItem purchaseRequestLineItem)
         {
+            if (purchaseRequestLineItem.Product.Name == null) return new EmptyResult();
+
             PurchaseRequestLineItem tempPurchaseRequestLineItem = db.PurchaseRequestLineItems.Find(purchaseRequestLineItem.Id);
+
             db.PurchaseRequestLineItems.Remove(tempPurchaseRequestLineItem);
             TrySave("removed.");
             CalculateTotal(purchaseRequestLineItem);
