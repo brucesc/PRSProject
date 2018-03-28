@@ -14,11 +14,19 @@ namespace PRSProject.Controllers
     {
         PRSDbContext db = new PRSDbContext();
 
-        //public ActionResult Login(string username, string password)
-        //{
-        //    db.Users.Where(u => u.UserName == username);
-        //    db.Users.Where(u => u.Password == password);
-        //}
+        public ActionResult Login(string username, string password)
+        {
+            if (username == null || password == null)
+            {
+                return new JsonNetResult { Data = new JsonMessage("Failure", "Invalid username/password") };
+            }
+            var user = db.Users.SingleOrDefault(u => u.UserName == username && u.Password == password);
+            if (user == null)
+            {
+                return new JsonNetResult { Data = new JsonMessage("Failure", "Invalid username/password") };
+            }
+            return new JsonNetResult { Data = new Msg { Result = "Success", Message = "Correct username and password", Data = user } };
+        }
 
         // return Json objects including the JsonRequestBehavior.AllowGet
         private ActionResult Js(object data)
