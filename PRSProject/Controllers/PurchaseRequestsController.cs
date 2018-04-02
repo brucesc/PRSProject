@@ -50,6 +50,12 @@ namespace PRSProject.Controllers
             return new JsonNetResult { Data = db.PurchaseRequests.ToList() };
         }
 
+        public ActionResult NeedsReviewList()
+        {
+            return new JsonNetResult { Data = db.PurchaseRequests.Where(p => p.Status == "REVIEW").ToList() };
+        }
+
+
         public ActionResult Get(int? id)
         {
             if (id == null)
